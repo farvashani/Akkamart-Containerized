@@ -1,0 +1,38 @@
+version: "3"
+services:
+  seed2:
+    image: akkamart-seed2
+    networks:
+      - nodes_net
+    environment:
+      - SEED_NODE_HOST=seed2
+      - OWN_HOST=seed2
+  gateway:
+    image: akkamart-gateway
+    networks:
+      - nodes_net
+    environment:
+      - SEED_NODE_HOST=seed2
+    ports:
+      - "5050:5050"
+  credentials:
+    image: akkamart-credentials
+    networks:
+      - nodes_net
+    environment:
+      - SEED_NODE_HOST=seed2
+  memberships:
+    image: akkamart-memberships
+    networks:
+      - nodes_net
+    environment:
+      - SEED_NODE_HOST=seed2
+  smsmessanger:
+    image: akkamart-smsmessanger
+    networks:
+      - nodes_net
+    environment:
+      - SEED_NODE_HOST=seed2
+networks:
+  nodes_net:
+    driver: bridge
