@@ -7,6 +7,7 @@ using Akka.Event;
 using Shared;
 namespace Seed2 {
     class Program {
+        [Obsolete]
         static void Main (string[] args) {
             var sys = Common.CreateSystem (args[0]);
 

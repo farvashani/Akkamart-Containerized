@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace Gateway.Controllers {
     [Route ("[controller]")]
     public class HomeController : Controller {
-        public IActorRef _apiGateway { get; private set; }
+        public IActorRef _gatewayGateway { get; private set; }
         public HomeController (IActorRef apiGateway) {
-            _apiGateway = apiGateway;
+            _gatewayGateway = apiGateway;
         }
 
         [HttpGet ("Index")]

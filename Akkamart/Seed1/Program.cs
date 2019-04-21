@@ -8,6 +8,7 @@ using Shared;
 
 namespace Seed1 {
     internal static class Program {
+        [Obsolete]
         private static void Main (string[] args) {
             var sys = Common.CreateSystem (args[0]);
 
