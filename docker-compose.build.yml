@@ -41,7 +41,7 @@ services:
       - SEED_NODE_HOST=seed2
     build:
       context: .
-      dockerfile: Akkamart/Messangers/Dockerfile.Build
+      dockerfile: /home/hossein/projects/Akkamart-Containerized/Akkamart/Messangers/Dockerfile.build
     networks:
       - akkamart
     restart: always
