@@ -4,14 +4,15 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Akka.Actor;
+using Akkatecture.Akka;
 using Gateway.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gateway.Controllers {
-    [Route ("[controller]")]
+    [Route ("actor/[controller]")]
     public class HomeController : Controller {
-        public IActorRef _gatewayGateway { get; private set; }
-        public HomeController (IActorRef apiGateway) {
+        public ActorRefProvider<GatewayActor> _gatewayGateway { get; private set; }
+        public HomeController (ActorRefProvider<GatewayActor> apiGateway) {
             _gatewayGateway = apiGateway;
         }
 

@@ -15,7 +15,6 @@ namespace Gateway {
             var root = AppDomain.CurrentDomain.BaseDirectory;
 
             CreateWebHostBuilder (args)
-
                 .UseWebRoot (AppDomain.CurrentDomain.BaseDirectory)
                 .UseContentRoot (Directory.GetCurrentDirectory ())
                 .UseUrls ("http://0.0.0.0:5050")
