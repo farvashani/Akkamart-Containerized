@@ -12,7 +12,11 @@ namespace Gateway {
 
             var sys = Common.CreateSystem (confUrl);
 
-            sys.ActorOf<GatewayStartup> (MyActorNames.Gateway);
+            var gatewayActor = sys.ActorOf<GatewayActor> (MyActorNames.Gateway);
+
+            services
+                .AddAkkatecture (sys)
+                .AddActorReference<GatewayActor> (gatewayActor);
 
         }
 

@@ -3,21 +3,16 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Akka.Actor;
 using Gateway.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gateway.Controllers {
     [Route ("[controller]")]
-    public class HomeController : Controller {
-        public IActorRef _apiGateway { get; private set; }
-        public HomeController (IActorRef apiGateway) {
-            _apiGateway = apiGateway;
-        }
-
+    //[ApiController]
+    public class MembersController : Controller {
         [HttpGet ("Index")]
         public IActionResult Index () {
-            return Ok ("Gateway is Running)");
+            return Ok ("Members is Running)");
         }
 
         public IActionResult Privacy () {

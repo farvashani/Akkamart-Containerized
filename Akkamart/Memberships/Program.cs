@@ -1,12 +1,29 @@
 ﻿using System;
 using Akka.Actor;
 using Memberships;
+using Microsoft.Extensions.Configuration;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.Elasticsearch;
 using Shared;
 
 namespace Memberships {
     class Program {
+        public static IConfiguration Configuration { get; private set; }
+
         [Obsolete]
         private static void Main (string[] args) {
+
+            var elasticsearchUri = Configuration["ElasticsearchUri"];
+            Log.Logger = new LoggerConfiguration ()
+                .Enrich.FromLogContext ()
+                .MinimumLevel.Debug ()
+                .WriteTo.Elasticsearch (new ElasticsearchSinkOptions (new Uri (elasticsearchUri)) {
+                    MinimumLogEventLevel = LogEventLevel.Debug,
+                        AutoRegisterTemplate = true,
+                })
+                .CreateLogger ();
+
             var sys = Common.CreateSystem (args[0]);
 
             sys.ActorOf<Membership> (MyActorNames.MembershipActorname);

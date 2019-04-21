@@ -1,4 +1,4 @@
-namespace Gateway.Models {
+namespace Gateway {
     public class VerifyMemberDTO {
         private string memberId;
 

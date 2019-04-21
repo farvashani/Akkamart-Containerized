@@ -5,14 +5,44 @@
   </PropertyGroup>
 
   <ItemGroup>
+
+    <PackageReference Include="Akka.Logger.Serilog" Version="1.3.9" />
+
+    <PackageReference Include="Akkatecture" Version="0.4.2" />
+    <PackageReference Include="Akkatecture.Clustering" Version="0.4.2" />
+    <PackageReference Include="DotLiquid" Version="2.0.298" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Autofac">
+      <Version>4.9.2</Version>
+    </PackageReference>
+    <PackageReference Include="Akka.DI.AutoFac" Version="1.3.9" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection">
+      <Version>4.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Autofac">
+      <Version>4.9.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Akka.Cluster" Version="1.3.12" />
     <PackageReference Include="Akka.Serialization.Hyperion" Version="1.3.12-beta" />
     <PackageReference Include="Akka.Bootstrap.Docker" Version="0.2.0" />
+    <PackageReference Include="Akka" Version="1.3.12" />
+    <PackageReference Include="Akka.Cluster.Sharding" Version="1.3.12-beta" />
     <PackageReference Include="Akkatecture" Version="0.4.2" />
-    <PackageReference Include="Akkatecture.Clustering" Version="0.4.2" />
+    <PackageReference Include="Akka.Persistence" Version="1.3.12" />
+    <PackageReference Include="Akka.Persistence.Query" Version="1.3.12" />
+    <PackageReference Include="Akka.Persistence.Query.Sql" Version="1.3.12" />
+    <PackageReference Include="Akka.Persistence.Sql.Common" Version="1.3.12" />
+    <PackageReference Include="Akka.Persistence.SqlServer" Version="1.3.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.8.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.2" />
+    <PackageReference Include="Serilog.Sinks.ElasticSearch" Version="6.5.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0">
 
-    <PackageReference Include="DotLiquid" Version="2.0.298" />
-
+    </PackageReference>
   </ItemGroup>
 
 
