@@ -8,13 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Gateway.Controllers {
     [Route ("api/[controller]")]
     [ApiController]
-
     public class MembershipController : Controller {
-        // private readonly ActorRefProvider<APIActor> _API;
-        //   //  public MembershipController (ActorRefProvider<APIActor> api) {
-        //       _API = api;
-        //   //  }
-
         public MembershipController () {
 
         }

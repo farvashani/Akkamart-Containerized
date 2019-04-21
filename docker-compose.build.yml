@@ -25,6 +25,17 @@ services:
     networks:
       - akkamart
     restart: always
+  memberships:
+    image: akkamart/memberships:${TAG:-latest}
+    container_name: akkamart-memberships
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Memberships/Dockerfile.Build
+    networks:
+      - akkamart
+    restart: always
   credentials:
     image: akkamart/credentials:${TAG:-latest}
     container_name: akkamart-credentials

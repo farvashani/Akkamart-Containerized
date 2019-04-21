@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gateway.Controllers {
     [Route ("api/[controller]")]
+    [ApiController]
     public class HomeController : Controller {
         [HttpGet ("Index")]
         public IActionResult Index () {
