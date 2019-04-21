@@ -7,7 +7,7 @@ services:
       - SEED_NODE_HOST=seed2
     build:
       context: .
-      dockerfile: /home/hossein/projects/Akkamart-Containerized/Akkamart/Seed2/Dockerfile.build
+      dockerfile: Akkamart/Seed2/Dockerfile.build
     networks:
       - akkamart
     restart: always
@@ -30,7 +30,7 @@ services:
       - SEED_NODE_HOST=seed2
     build:
       context: .
-      dockerfile: /home/hossein/projects/Akkamart-Containerized/Akkamart/Credentials/Dockerfile.build
+      dockerfile: Akkamart/Credentials/Dockerfile.build
     networks:
       - akkamart
     restart: always
@@ -41,7 +41,7 @@ services:
       - SEED_NODE_HOST=seed2
     build:
       context: .
-      dockerfile: /home/hossein/projects/Akkamart-Containerized/Akkamart/Messangers/Dockerfile.build
+      dockerfile: Akkamart/Messangers/Dockerfile.build
     networks:
       - akkamart
     restart: always
