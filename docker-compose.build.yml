@@ -17,6 +17,8 @@ services:
     environment:
       - SEED_NODE_HOST=seed2
       - ASPNETCORE_URLS=http://*:5050
+    ports:
+      - "5050:5050"
     build:
       context: .
       dockerfile: Akkamart/Gateway/Dockerfile.Build
