@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Akka.Actor;
 using Akkatecture.Akka;
+using Gateway.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gateway.Controllers {
@@ -25,7 +26,7 @@ namespace Gateway.Controllers {
         }
 
         [HttpGet ("members/{id}")]
-        public async Task<ActionResult<string>> GetAsync (string id) {
+        public ActionResult<string> Get (string id) {
             // if (id.StartsWith ("member-"))
             //     id = id.Remove (id.IndexOf ("member-"), "member-".Length);
 
@@ -37,7 +38,7 @@ namespace Gateway.Controllers {
 
         // POST
         [HttpPost ("Register")]
-        public async Task<IActionResult> Register ([FromBody] AddMemberDto model) {
+        public IActionResult Register ([FromBody] AddMemberDto model) {
             // ColorConsole.WriteMagenta ("AddMember from MembershipController Started");
             // var id = MemberId.New;
             // var cmd = new CreateMemberCommand (id, model.Mobilenumber);
@@ -51,7 +52,7 @@ namespace Gateway.Controllers {
         }
 
         [HttpPost ("VerifyMember")]
-        public async Task<IActionResult> VerifyMemberAsync (VerifyMemberDTO model) {
+        public IActionResult VerifyMember (VerifyMemberDTO model) {
             // var memberId = MemberId.With (Guid.Parse (model.MemberId));
             // var cmd = new VerifyMemberCommand (memberId, model.VerificationCode);
             // var result = await _API.Ask<MemberVerificationResponse> (cmd);
@@ -63,7 +64,7 @@ namespace Gateway.Controllers {
         }
 
         [HttpPost ("Login")]
-        public async Task<IActionResult> LoginAsync (LoginDto model) {
+        public IActionResult Login (LoginDto model) {
             // var cmd = new Login (model.Username, model.Password);
             // var result = await _API.Ask (cmd);
 

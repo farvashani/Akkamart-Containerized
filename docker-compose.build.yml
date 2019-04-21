@@ -1,0 +1,50 @@
+version: "3.4"
+services:
+  seed2:
+    image: akkamart/seed:${TAG:-latest}
+    container_name: akkamart-seed2
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: /home/hossein/projects/Akkamart-Containerized/Akkamart/Seed2/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  gateway:
+    image: akkamart/gateway:${TAG:-latest}
+    container_name: akkamart-gateway
+    environment:
+      - SEED_NODE_HOST=seed2
+      - ASPNETCORE_URLS=http://*:5050
+    build:
+      context: .
+      dockerfile: Akkamart/Gateway/Dockerfile.Build
+    networks:
+      - akkamart
+    restart: always
+  credentials:
+    image: akkamart/credentials:${TAG:-latest}
+    container_name: akkamart-credentials
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: /home/hossein/projects/Akkamart-Containerized/Akkamart/Credentials/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  smsmessanger:
+    image: akkamart/smsmessanger:${TAG:-latest}
+    container_name: akkamart-smsmessanger
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Messangers/Dockerfile.Build
+    networks:
+      - akkamart
+    restart: always
+networks:
+  akkamart:
+    driver: bridge
