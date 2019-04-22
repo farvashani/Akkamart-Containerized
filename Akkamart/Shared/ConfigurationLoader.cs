@@ -33,7 +33,8 @@ namespace Shared {
                             "localhost" :
                             System.Net.Dns.GetHostName ()))
                     .Replace ("{{SEED_NODE_HOST}}", Environment.GetEnvironmentVariable ("SEED_NODE_HOST") ?? "localhost")
-                    .Replace ("{{SEED_NODE_PORT}}", Environment.GetEnvironmentVariable ("SEED_NODE_PORT") ?? "8080");
+                    .Replace ("{{SEED_NODE_PORT}}", Environment.GetEnvironmentVariable ("SEED_NODE_PORT") ?? "8080")
+                    .Replace ("{{SQLSERVER_CONNECTION}}", Environment.GetEnvironmentVariable ("SQLSERVER_CONNECTION") ?? "");
                 Console.WriteLine (config);
                 return ConfigurationFactory.ParseString (config);
             }

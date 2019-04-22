@@ -48,6 +48,7 @@
                 "OWN_HOST": "localhost",
                 "SEED_NODE_HOST": "localhost",
                 // "SEED_NODE_PORT": "8080",
+                "SQLSERVER_CONNECTION": "Server=localhost,1433;Database=akkamart;User Id=sa;Password=(PHlx%IV2zbT&j3P;",
             }
         },
         {
