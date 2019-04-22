@@ -1,4 +1,4 @@
-namespace Gateway.Messages {
+namespace Gateway {
     public class LoginCommand {
         public string Username { get; set; }
         public string Password { get; set; }

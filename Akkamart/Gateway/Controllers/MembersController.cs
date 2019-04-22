@@ -23,7 +23,7 @@ namespace Gateway.Controllers {
         }
 
         [HttpGet ("members/{id}")]
-        public async Task<ActionResult<string>>  Get (string id) {
+        public async Task<ActionResult<string>> Get (string id) {
 
             var member = await _gateway.Ask<MemberStateResponse> (new GetMemberState (id));
             return Ok (member);
@@ -36,7 +36,7 @@ namespace Gateway.Controllers {
 
             var cmd = new AddMember (model.Mobilenumber);
             // // _gateway.Tell(cmd);
-            var member = await _gateway.Ask<AddMemberResponse> (cmd);
+            var member = await _gateway.Ask<MemberAddedEvent> (cmd);
 
             return Ok (member);
 
@@ -48,11 +48,11 @@ namespace Gateway.Controllers {
         public async Task<IActionResult> VerifyMember (VerifyMemberDTO model) {
 
             var cmd = new VerifyMemberCommand (model.MemberId, model.VerificationCode);
-            var result = await _gateway.Ask<MemberVerificationResponse> (cmd);
+            var result = await _gateway.Ask<MemberVerifiedEvent> (cmd);
             if (result.IsSucceed)
-                return Ok (model.MemberId);
+            return Ok (model.MemberId);
             else
-                return BadRequest (result);
+            return BadRequest (result);
             // return Ok ();
         }
 

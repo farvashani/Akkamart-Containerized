@@ -28,12 +28,8 @@ namespace Gateway {
             this.verificationCode = verificationCode;
         }
     }
-    public class MemberVerificationResponse {
-
-    }
-    public class AddMemberResponse {
-
-    }
+   
+  
 
     public class AddCredentialForMember {
         public AddCredentialForMember (string memberId, string username, string password) {

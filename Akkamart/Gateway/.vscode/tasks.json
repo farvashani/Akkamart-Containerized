@@ -17,7 +17,8 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Gateway.csproj"
+                "${workspaceFolder}/Gateway.csproj",
+                "/property:GenerateFullPaths=true"
             ],
             "problemMatcher": "$tsc"
         },
