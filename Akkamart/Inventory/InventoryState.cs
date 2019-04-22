@@ -1,7 +1,5 @@
-namespace .
-{
-    public class InventoryState
-    {
-        
+namespace Inventory {
+    public class InventoryState {
+
     }
 }

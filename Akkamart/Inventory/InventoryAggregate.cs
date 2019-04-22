@@ -1,7 +1,5 @@
-namespace .
-{
-    public class InventoryAggregate
-    {
-        
+namespace Inventory {
+    public class InventoryAggregate {
+
     }
 }

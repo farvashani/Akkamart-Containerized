@@ -21,27 +21,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Akkamart\Shared\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting", "Akkamart\Accounting\Accounting.csproj", "{E97840E2-A8E5-4E85-A685-5DFEB7BCD665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLocator", "GeoLocator\GeoLocator.csproj", "{87F84093-3673-42DC-85F0-F04ABD5E0239}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLocator", "Akkamart\GeoLocator\GeoLocator.csproj", "{87F84093-3673-42DC-85F0-F04ABD5E0239}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketign", "Marketign\Marketign.csproj", "{3F526A33-DDA6-4441-92AD-F697746DE9AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketign", "Akkamart\Marketign\Marketign.csproj", "{3F526A33-DDA6-4441-92AD-F697746DE9AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering", "Ordering\Ordering.csproj", "{1E08F6F6-E881-4E5A-B9D7-2ABBFF447E0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering", "Akkamart\Ordering\Ordering.csproj", "{1E08F6F6-E881-4E5A-B9D7-2ABBFF447E0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments", "Payments\Payments.csproj", "{EF8430B4-7491-47BA-98D9-8593C14F4691}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments", "Akkamart\Payments\Payments.csproj", "{EF8430B4-7491-47BA-98D9-8593C14F4691}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stores", "Stores\Stores.csproj", "{75AD48D6-7C59-46D6-BBD6-A4807954AD40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stores", "Akkamart\Stores\Stores.csproj", "{75AD48D6-7C59-46D6-BBD6-A4807954AD40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers", "Customers\Customers.csproj", "{310416DD-C23C-4EB6-A372-3B387591E15B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers", "Akkamart\Customers\Customers.csproj", "{310416DD-C23C-4EB6-A372-3B387591E15B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory", "Inventory\Inventory.csproj", "{7F465621-BA19-4ED5-A962-7F84B1E58ECF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory", "Akkamart\Inventory\Inventory.csproj", "{7F465621-BA19-4ED5-A962-7F84B1E58ECF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Points", "Points\Points.csproj", "{83340546-A5FC-4C08-89CD-56D522F8D77A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Points", "Akkamart\Points\Points.csproj", "{83340546-A5FC-4C08-89CD-56D522F8D77A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallets", "Wallets\Wallets.csproj", "{974786F3-4C25-4A47-96B5-75C997FEEFE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wallets", "Akkamart\Wallets\Wallets.csproj", "{974786F3-4C25-4A47-96B5-75C997FEEFE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalogs", "Catalogs\Catalogs.csproj", "{CD2538DD-3031-4C18-96BD-011EC4C9DE0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalogs", "Akkamart\Catalogs\Catalogs.csproj", "{CD2538DD-3031-4C18-96BD-011EC4C9DE0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products", "Products\Products.csproj", "{D7C86EB1-072A-4D4E-A83F-D339CBCBADDE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products", "Akkamart\Products\Products.csproj", "{D7C86EB1-072A-4D4E-A83F-D339CBCBADDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

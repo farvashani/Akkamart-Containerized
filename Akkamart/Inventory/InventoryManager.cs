@@ -1,7 +1,5 @@
-namespace .
-{
-    public class InventoryManager
-    {
-        
+namespace Inventory {
+    public class InventoryManager {
+
     }
 }
