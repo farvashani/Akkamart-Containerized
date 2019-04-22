@@ -30,7 +30,7 @@ services:
       - SEED_NODE_HOST=seed2
       - SQLSERVER_CONNECTION = Server=localhost,1433;Database=akkamart;User Id=sa;Password=(PHlx%IV2zbT&j3P;
   smsmessanger:
-    image: akkamart-smsmessanger
+    image: akkamart-smsmanager
     networks:
       - nodes_net
     environment:

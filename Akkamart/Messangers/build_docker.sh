@@ -2,4 +2,4 @@
 
 sh build.sh
 
-docker build -t akkamart-smsmessanger .
+docker build -t akkamart-SmsManager .

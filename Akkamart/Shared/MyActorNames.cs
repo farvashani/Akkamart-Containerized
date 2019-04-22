@@ -1,9 +1,9 @@
 namespace Shared {
     public class MyActorNames {
-        //memberships smsmessanger credentials gateway
+        //memberships SmsManager credentials gateway
         public const string MembershipActorname = "memberships";
 
-        public const string SmsServiceActorname = "smsmessanger";
+        public const string SmsServiceActorname = "SmsManager";
         public const string CredentialActorname = "credentials";
         public const string Gateway = "gateway";
 
