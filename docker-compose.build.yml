@@ -47,9 +47,9 @@ services:
     networks:
       - akkamart
     restart: always
-  smsmessanger:
-    image: akkamart/smsmessanger:${TAG:-latest}
-    container_name: akkamart-smsmessanger
+  SmsManager:
+    image: akkamart/SmsManager:${TAG:-latest}
+    container_name: akkamart-SmsManager
     environment:
       - SEED_NODE_HOST=seed2
     build:

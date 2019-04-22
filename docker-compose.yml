@@ -27,8 +27,8 @@ services:
       - nodes_net
     environment:
       - SEED_NODE_HOST=seed2
-  smsmessanger:
-    image: akkamart-smsmessanger
+  SmsManager:
+    image: akkamart-SmsManager
     networks:
       - nodes_net
     environment:

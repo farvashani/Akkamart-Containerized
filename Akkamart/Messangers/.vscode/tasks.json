@@ -7,8 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Akkamart/Gateway/Gateway.csproj",
-                "/property:GenerateFullPaths=true "
+                "${workspaceFolder}/Messangers.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -18,8 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Akkamart/Gateway/Gateway.csproj",
-                "/property:GenerateFullPaths=true "
+                "${workspaceFolder}/Messangers.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -30,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/Akkamart/Gateway/Gateway.csproj"
+                "${workspaceFolder}/Messangers.csproj"
             ],
             "problemMatcher": "$tsc"
         }

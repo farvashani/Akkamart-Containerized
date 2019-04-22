@@ -12,7 +12,7 @@ namespace Messanger {
         static void Main (string[] args) {
             var sys = Common.CreateSystem (args[0]);
 
-            sys.ActorOf<SmsMessanger> ("smsmessanger");
+            sys.ActorOf<SmsManager> ("SmsManager");
 
             Common.WaitForExit ();
             Common.Shutdown (sys);
