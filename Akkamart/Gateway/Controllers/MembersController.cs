@@ -23,58 +23,58 @@ namespace Gateway.Controllers {
         }
 
         [HttpGet ("members/{id}")]
-        public ActionResult<string> Get (string id) {
+        public async Task<ActionResult<string>>  Get (string id) {
 
-            // var member = await _gateway.Ask<MemberStateResponse> (new GetMemberState (id));
-            // return Ok (member);
-            return Ok ();
+            var member = await _gateway.Ask<MemberStateResponse> (new GetMemberState (id));
+            return Ok (member);
+            // return Ok ();
         }
 
         // POST
         [HttpPost ("Register")]
-        public IActionResult Register ([FromBody] AddMemberDto model) {
+        public async Task<IActionResult> Register ([FromBody] AddMemberDto model) {
 
-            // var cmd = new AddMember (model.Mobilenumber);
+            var cmd = new AddMember (model.Mobilenumber);
             // // _gateway.Tell(cmd);
-            // var member = await _gateway.Ask<AddMemberResponse> (cmd);
+            var member = await _gateway.Ask<AddMemberResponse> (cmd);
 
-            // return Ok (member);
+            return Ok (member);
 
-            return Ok ();
+            // return Ok ();
             //return Accepted();
         }
 
         [HttpPost ("VerifyMember")]
-        public IActionResult VerifyMember (VerifyMemberDTO model) {
+        public async Task<IActionResult> VerifyMember (VerifyMemberDTO model) {
 
-            // var cmd = new VerifyMemberCommand (model.MemberId, model.VerificationCode);
-            // var result = await _gateway.Ask<MemberVerificationResponse> (cmd);
-            // if (result.IsSucceed)
-            //     return Ok (model.MemberId);
-            // else
-            //     return BadRequest (result);
-            return Ok ();
+            var cmd = new VerifyMemberCommand (model.MemberId, model.VerificationCode);
+            var result = await _gateway.Ask<MemberVerificationResponse> (cmd);
+            if (result.IsSucceed)
+                return Ok (model.MemberId);
+            else
+                return BadRequest (result);
+            // return Ok ();
         }
 
         [HttpPost ("Login")]
-        public IActionResult Login (LoginDto model) {
+        public async Task<IActionResult> Login (LoginDto model) {
             var cmd = new Login (model.Username, model.Password);
-            // var result = await _gateway.Ask (cmd);
+            var result = await _gateway.Ask (cmd);
 
-            // return Ok (result);
-            return Ok ();
+            return Ok (result);
+            // return Ok ();
         }
 
         [HttpPost ("SetCredential/{id}")]
         public IActionResult SetCredential (string id, LoginDto model) {
-            // if (id.StartsWith ("member-"))
-            //     id = id.Remove (id.IndexOf ("member-"), "member-".Length);
+            if (id.StartsWith ("member-"))
+                id = id.Remove (id.IndexOf ("member-"), "member-".Length);
 
-            // var cmd = new AddCredentialForMember (id, model.Username, model.Password);
-            // _gateway.Tell (cmd);
+            var cmd = new AddCredentialForMember (id, model.Username, model.Password);
+            _gateway.Tell (cmd);
 
-            // return Accepted ();
-            return Ok ();
+            return Accepted ();
+            // return Ok ();
         }
     }
 }
