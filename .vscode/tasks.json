@@ -2,13 +2,53 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build Gateway",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
                 "${workspaceFolder}/Akkamart/Gateway/Gateway.csproj",
                 "/property:GenerateFullPaths=true "
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "build Membership",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Akkamart/Memberships/Memberships.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "build Seed1",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Akkamart/Seed1/Seed1.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "build Seed2",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Akkamart/Seed2/Seed2.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "build Membership",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Akkamart/Memberships/Memberships.csproj"
             ],
             "problemMatcher": "$tsc"
         },

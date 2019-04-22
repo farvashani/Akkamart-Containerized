@@ -14,7 +14,7 @@
             "name": "Gateway",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build Gateway",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/Akkamart/Gateway/bin/Debug/netcoreapp2.2/Gateway.dll",
             "args": [],
@@ -37,7 +37,7 @@
             "name": "Membership",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build Membership",
             "program": "${workspaceFolder}/Akkamart/Memberships/bin/Debug/netcoreapp2.2/Memberships.dll",
             "args": ["Memberships.conf"],
             "cwd": "${workspaceFolder}/Akkamart/Memberships",
@@ -51,10 +51,10 @@
             }
         },
         {
-            "name": "seed1",
+            "name": "Seed1",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build Seed1",
             //src/Seed/bin/Debug/netcoreapp2.2/Lighthouse.dll
             "program": "${workspaceFolder}/Akkamart/Seed1/bin/Debug/netcoreapp2.2/Seed1.dll",
             "args": ["seed1.conf"],
@@ -68,10 +68,10 @@
             }
         },
         {
-            "name": "seed2",
+            "name": "Seed2",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build Seed2",
             //src/Seed/bin/Debug/netcoreapp2.2/Lighthouse.dll
             "program": "${workspaceFolder}/Akkamart/Seed2/bin/Debug/netcoreapp2.2/Seed2.dll",
             "args": ["seed2.conf"],
