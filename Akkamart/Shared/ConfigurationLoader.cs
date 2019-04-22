@@ -27,7 +27,7 @@ namespace Shared {
 
             if (File.Exists (configFile)) {
                 string config = File.ReadAllText (configFile);
-                config
+                config = config
                     .Replace ("{{OWN_HOST}}", Environment.GetEnvironmentVariable ("OWN_HOST") ??
                         (Environment.CommandLine.Contains ("--local") ?
                             "localhost" :

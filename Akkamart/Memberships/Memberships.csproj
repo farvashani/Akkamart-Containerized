@@ -7,9 +7,14 @@
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
-  <ItemGroup>
+  <!-- <ItemGroup>
     <None Update="Gateway.conf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
+  </ItemGroup> -->
+  <ItemGroup>
+    <None Update="Memberships.conf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>  
 </Project>

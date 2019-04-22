@@ -8,6 +8,9 @@ pwd
 cd Akkamart/Seed1
 sh build_docker.sh
 pwd
+cd Akkamart/Seed2
+sh build_docker.sh
+pwd
 cd ..
 cd Credentials
 sh build_docker.sh
