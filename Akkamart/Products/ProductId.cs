@@ -1,5 +1,9 @@
+using Akkatecture.Core;
+
 namespace Products {
-    public class ProductId {
+    public class ProductId : Identity<ProductId> {
+
+        public ProductId (string value) : base (value) { }
 
     }
 }

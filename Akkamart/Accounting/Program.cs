@@ -1,12 +1,22 @@
 ﻿using System;
+using System.IO;
+using Akka.Actor;
+using Microsoft.Extensions.Configuration;
+using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.Elasticsearch;
+using Shared;
+using Shared.MainExtension;
+namespace Accounting {
+    class Program {
+        [Obsolete]
+        static void Main (string[] args) {
+            var sys = Common.CreateSystem (args[0]);
 
-namespace Accounting
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
+            sys.ActorOf<AccountManager> (MyActorNames.CredentialActorname);
+
+            Common.WaitForExit ();
+            Common.Shutdown (sys);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Marketign
+namespace Sagas
 {
     class Program
     {

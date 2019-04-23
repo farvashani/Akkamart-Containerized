@@ -1,5 +1,9 @@
+using Akkatecture.Core;
+
 namespace Inventory {
-    public class InventoryId {
+    public class InventoryId : Identity<InventoryId> {
+
+        public InventoryId (string value) : base (value) { }
 
     }
 }

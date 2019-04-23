@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using Akka.Actor;
-using Memberships;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Events;
@@ -9,15 +8,12 @@ using Serilog.Sinks.Elasticsearch;
 using Shared;
 using Shared.MainExtension;
 
-namespace Memberships
-{
-    class Program
-    {
+namespace Memberships {
+    class Program {
         public static IConfiguration Configuration { get; private set; }
 
         [Obsolete]
-        private static void Main(string[] args)
-        {
+        private static void Main (string[] args) {
 
             // var elasticsearchUri = Configuration["ElasticsearchUri"];
             // Log.Logger = new LoggerConfiguration ()
@@ -29,13 +25,12 @@ namespace Memberships
             //     })
             //     .CreateLogger ();            
 
+            var sys = Common.CreateSystem (args[0]);
 
-            var sys = Common.CreateSystem(args[0]);
+            sys.ActorOf<Membership> (MyActorNames.MembershipActorname);
 
-            sys.ActorOf<Membership>(MyActorNames.MembershipActorname);
-
-            Common.WaitForExit();
-            Common.Shutdown(sys);
+            Common.WaitForExit ();
+            Common.Shutdown (sys);
         }
     }
 }
