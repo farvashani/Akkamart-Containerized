@@ -15,7 +15,7 @@ services:
       - SEED_NODE_HOST=seed2
     ports:
       - "5050:5050"
-  credentials:
+  # credentials:
     image: akkamart-credentials
     networks:
       - nodes_net
@@ -29,13 +29,13 @@ services:
     environment:
       - SEED_NODE_HOST=seed2
       - SQLSERVER_CONNECTION = Server=localhost,1433;Database=akkamart;User Id=sa;Password=(PHlx%IV2zbT&j3P;
-  smsmessanger:
-    image: akkamart-smsmanager
-    networks:
-      - nodes_net
-    environment:
-      - SEED_NODE_HOST=seed2
-      - SQLSERVER_CONNECTION = Server=localhost,1433;Database=akkamart;User Id=sa;Password=(PHlx%IV2zbT&j3P;
+  # smsmessanger:
+  #   image: akkamart-smsmanager
+  #   networks:
+  #     - nodes_net
+  #   environment:
+  #     - SEED_NODE_HOST=seed2
+  #     - SQLSERVER_CONNECTION = Server=localhost,1433;Database=akkamart;User Id=sa;Password=(PHlx%IV2zbT&j3P;
 networks:
   nodes_net:
     driver: bridge

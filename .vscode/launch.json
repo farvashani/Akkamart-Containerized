@@ -1,9 +1,9 @@
 {
-   // Use IntelliSense to find out which attributes exist for C# debugging
-   // Use hover for the description of the existing attributes
-   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-   "version": "0.2.0",
-   "configurations": [        
+    // Use IntelliSense to find out which attributes exist for C# debugging
+    // Use hover for the description of the existing attributes
+    // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+    "version": "0.2.0",
+    "configurations": [
         {
             "name": ".NET Core Attach",
             "type": "coreclr",
@@ -27,6 +27,7 @@
                 "ASPNETCORE_ENVIRONMENT": "Development",
                 "OWN_HOST": "localhost",
                 "SEED_NODE_HOST": "localhost",
+                "SQLSERVER_CONNECTION": "Server=localhost,1433;Initial Catalog=Akkamart;Persist Security Info=False;User ID=sa;Password=<YourStrong!Passw0rd>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;"
                 // "SEED_NODE_PORT": "8080",
             },
             "sourceFileMap": {
@@ -34,22 +35,45 @@
             }
         },
         {
+            "name": "Gateway console",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build Gateway",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/Akkamart/Gateway/bin/Debug/netcoreapp2.2/Gateway.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Akkamart/Gateway",
+            "console": "externalTerminal",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "OWN_HOST": "localhost",
+                "SEED_NODE_HOST": "localhost",
+                "SQLSERVER_CONNECTION": "Server=localhost,1433;Initial Catalog=Akkamart;Persist Security Info=False;User ID=sa;Password=<YourStrong!Passw0rd>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;",
+                "SEED_NODE_PORT": "8080",
+            },
+        },
+        {
             "name": "Membership",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build Membership",
             "program": "${workspaceFolder}/Akkamart/Memberships/bin/Debug/netcoreapp2.2/Memberships.dll",
-            "args": ["Memberships.conf"],
+            "args": [
+                "Memberships.conf"
+            ],
             "cwd": "${workspaceFolder}/Akkamart/Memberships",
-            "console": "internalConsole",
+            "console": "externalTerminal",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
                 "OWN_HOST": "localhost",
                 "SEED_NODE_HOST": "localhost",
-                // "SEED_NODE_PORT": "8080",
-                "SQLSERVER_CONNECTION": "Server=localhost,1433;Database=akkamart;User Id=sa;Password=(PHlx%IV2zbT&j3P;",
-            }
+                "SQLSERVER_CONNECTION": "Server=localhost,1433;Initial Catalog=Akkamart;Persist Security Info=False;User ID=sa;Password=<YourStrong!Passw0rd>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;",
+                "SEED_NODE_PORT": "8080",
+            },
         },
         {
             "name": "Messangers",
@@ -57,7 +81,9 @@
             "request": "launch",
             "preLaunchTask": "build Messangers",
             "program": "${workspaceFolder}/Akkamart/Messangers/bin/Debug/netcoreapp2.2/Messangers.dll",
-            "args": ["Messangers.conf"],
+            "args": [
+                "Messangers.conf"
+            ],
             "cwd": "${workspaceFolder}/Akkamart/Messangers",
             "console": "internalConsole",
             "stopAtEntry": false,
@@ -65,7 +91,7 @@
             "env": {
                 "OWN_HOST": "localhost",
                 "SEED_NODE_HOST": "localhost",
-                // "SEED_NODE_PORT": "8080",
+                "SEED_NODE_PORT": "8080",
                 "SQLSERVER_CONNECTION": "Server=localhost,1433;Database=akkamart;User Id=sa;Password=(PHlx%IV2zbT&j3P;",
             }
         },
@@ -76,14 +102,16 @@
             "preLaunchTask": "build Seed1",
             //src/Seed/bin/Debug/netcoreapp2.2/Lighthouse.dll
             "program": "${workspaceFolder}/Akkamart/Seed1/bin/Debug/netcoreapp2.2/Seed1.dll",
-            "args": ["seed1.conf"],
+            "args": [
+                "seed1.conf"
+            ],
             "cwd": "${workspaceFolder}/Akkamart/Seed1",
             "stopAtEntry": false,
-            "console": "integratedTerminal",
+            "console": "externalTerminal",
             "env": {
                 "OWN_HOST": "localhost",
                 "SEED_NODE_HOST": "localhost",
-                // "SEED_NODE_PORT": "8080",
+                "SEED_NODE_PORT": "8080",
             }
         },
         {
@@ -93,7 +121,9 @@
             "preLaunchTask": "build Seed2",
             //src/Seed/bin/Debug/netcoreapp2.2/Lighthouse.dll
             "program": "${workspaceFolder}/Akkamart/Seed2/bin/Debug/netcoreapp2.2/Seed2.dll",
-            "args": ["seed2.conf"],
+            "args": [
+                "seed2.conf"
+            ],
             "cwd": "${workspaceFolder}/Akkamart/Seed2",
             "stopAtEntry": false,
             "console": "integratedTerminal",
@@ -104,6 +134,5 @@
                 // "SEED_NODE_PORT": "8080",
             }
         },
-        
     ]
 }

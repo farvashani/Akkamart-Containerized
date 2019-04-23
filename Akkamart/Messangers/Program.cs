@@ -12,12 +12,12 @@ namespace Messanger {
         static void Main (string[] args) {
             var sys = Common.CreateSystem (args[0]);
 
-            var smsManager = sys.ActorOf<SmsManager>("SmsManager");
+            var smsManager = sys.ActorOf<SmsManager>(nameof(SmsManager).ToLower());
 
             //Temp Code
-            var smsId = SmsId.New;
-            var cmd = new SendSmsCommand(smsId,"09901359936","Salam");
-            smsManager.Tell(cmd);
+            // var smsId = SmsId.New;
+            // var cmd = new SendSmsCommand(smsId,"09901359936","Salam");
+            // smsManager.Tell(cmd);
 
             Common.WaitForExit ();
             Common.Shutdown (sys);

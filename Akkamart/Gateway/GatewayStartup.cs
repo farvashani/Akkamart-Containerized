@@ -19,13 +19,15 @@ namespace Gateway {
 
             MessangerService = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
                 MyActorNames.SmsServiceActorname);
-            //var i = 1;
+            var i = 1;
             Receive<ReceiveTimeout> (t => {
-                // _log.Info ("Tick..");
-                // membership.Tell (new WorkItem { Id = i, Name = $"Work-{DateTime.Now.TimeOfDay}" });
 
-                // sms.Tell (new WorkItem { Id = i, Name = $"Work-{DateTime.Now.TimeOfDay}" });
-                // i++;
+                _log.Info ("Tick..");
+
+                MembershipService.Tell (new WorkItem { Id = i, Name = $"Work-{DateTime.Now.TimeOfDay}" });
+
+                MessangerService.Tell (new WorkItem { Id = i, Name = $"Work-{DateTime.Now.TimeOfDay}" });
+                i++;
             });
         }
 

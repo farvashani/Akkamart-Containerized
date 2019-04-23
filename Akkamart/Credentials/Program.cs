@@ -12,7 +12,7 @@ namespace Credentials {
         static void Main (string[] args) {
             var sys = Common.CreateSystem (args[0]);
 
-            sys.ActorOf<CredentialManager> (MyActorNames.CredentialActorname);
+            sys.ActorOf<CredentialManager> (nameof (CredentialManager).ToLower ());
 
             Common.WaitForExit ();
             Common.Shutdown (sys);

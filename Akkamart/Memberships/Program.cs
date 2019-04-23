@@ -27,7 +27,21 @@ namespace Memberships {
 
             var sys = Common.CreateSystem (args[0]);
 
-            sys.ActorOf<Membership> (MyActorNames.MembershipActorname);
+            var membershipActor = sys.ActorOf<MemberManager> (nameof (MemberManager).ToLower ());
+
+            //     var q = false;
+            //    // while (!q) {
+
+            //         var memId = MemberId.New;
+            //         var cmd = new CreateMemberCommand (memId, "09018119700");
+            //         membershipActor.Tell (cmd);
+
+            //         var qs = Console.ReadLine ();
+            //         if (qs == "q") {
+            //             q = true;
+            //         }
+
+            //         Console.ReadLine ();
 
             Common.WaitForExit ();
             Common.Shutdown (sys);

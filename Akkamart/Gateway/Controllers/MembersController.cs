@@ -34,6 +34,7 @@ namespace Gateway.Controllers {
         public async Task<IActionResult> Register ([FromBody] AddMemberDto model) {
 
             var cmd = new AddMember (model.Mobilenumber);
+            //var member = await _gateway.Ask<MemberAddedEvent> (cmd);
             var member = await _gateway.Ask<MemberAddedEvent> (cmd);
 
             return Ok (member);
