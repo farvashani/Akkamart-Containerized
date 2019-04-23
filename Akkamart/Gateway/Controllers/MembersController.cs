@@ -27,7 +27,6 @@ namespace Gateway.Controllers {
 
             var member = await _gateway.Ask<MemberStateResponse> (new GetMemberState (id));
             return Ok (member);
-            // return Ok ();
         }
 
         // POST
@@ -35,13 +34,9 @@ namespace Gateway.Controllers {
         public async Task<IActionResult> Register ([FromBody] AddMemberDto model) {
 
             var cmd = new AddMember (model.Mobilenumber);
-            // // _gateway.Tell(cmd);
             var member = await _gateway.Ask<MemberAddedEvent> (cmd);
 
             return Ok (member);
-
-            // return Ok ();
-            //return Accepted();
         }
 
         [HttpPost ("VerifyMember")]
@@ -53,7 +48,6 @@ namespace Gateway.Controllers {
             return Ok (model.MemberId);
             else
             return BadRequest (result);
-            // return Ok ();
         }
 
         [HttpPost ("Login")]
@@ -62,7 +56,6 @@ namespace Gateway.Controllers {
             var result = await _gateway.Ask (cmd);
 
             return Ok (result);
-            // return Ok ();
         }
 
         [HttpPost ("SetCredential/{id}")]
@@ -74,7 +67,6 @@ namespace Gateway.Controllers {
             _gateway.Tell (cmd);
 
             return Accepted ();
-            // return Ok ();
         }
     }
 }
