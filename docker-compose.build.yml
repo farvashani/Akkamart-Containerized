@@ -47,14 +47,134 @@ services:
     networks:
       - akkamart
     restart: always
-  SmsManager:
+  smsmanager:
     image: akkamart/SmsManager:${TAG:-latest}
-    container_name: akkamart-SmsManager
+    container_name: akkamart-smsManager
     environment:
       - SEED_NODE_HOST=seed2
     build:
       context: .
       dockerfile: Akkamart/Messangers/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  ordering:
+    image: akkamart/Ordering:${TAG:-latest}
+    container_name: akkamart-ordering
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Ordering/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  customers:
+    image: akkamart/Ordering:${TAG:-latest}
+    container_name: akkamart-customers
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Customers/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  accounting:
+    image: akkamart/Accounting:${TAG:-latest}
+    container_name: akkamart-accounting
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Accounting/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  catalogs:
+    image: akkamart/Catalogs:${TAG:-latest}
+    container_name: akkamart-catalogs
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Catalogs/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  geolocator:
+    image: akkamart/GeoLocator:${TAG:-latest}
+    container_name: akkamart-geolocator
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/GeoLocator/Dockerfile.build
+    networks:
+      - akkamart
+  inventory:
+    image: akkamart/Inventory:${TAG:-latest}
+    container_name: akkamart-inventory
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Inventory/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  marketing:
+    image: akkamart/Marketing:${TAG:-latest}
+    container_name: akkamart-marketing
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Marketing/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  payments:
+    image: akkamart/Payments:${TAG:-latest}
+    container_name: akkamart-payments
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Payments/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  points:
+    image: akkamart/Points:${TAG:-latest}
+    container_name: akkamart-points
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Points/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  products:
+    image: akkamart/Products:${TAG:-latest}
+    container_name: akkamart-products
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Products/Dockerfile.build
+    networks:
+      - akkamart
+    restart: always
+  sagas:
+    image: akkamart/ProdSagasucts:${TAG:-latest}
+    container_name: akkamart-sagas
+    environment:
+      - SEED_NODE_HOST=seed2
+    build:
+      context: .
+      dockerfile: Akkamart/Sagas/Dockerfile.build
     networks:
       - akkamart
     restart: always
