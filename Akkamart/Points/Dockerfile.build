@@ -1,0 +1,18 @@
+FROM microsoft/dotnet:2.2-aspnetcore-runtime AS base
+WORKDIR /app
+
+FROM microsoft/dotnet:2.2-sdk AS build
+WORKDIR /src
+COPY . .
+#/Akkamart/Points/Points.csproj
+RUN dotnet restore Akkamart/Points/Points.csproj
+WORKDIR /src/Akkamart/Points
+RUN dotnet build --no-restore -o /app
+
+FROM build AS publish
+RUN dotnet publish --no-restore -o /app
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app .
+ENTRYPOINT ["dotnet", "Points.dll", "Points.conf"] 
