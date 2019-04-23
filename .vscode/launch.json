@@ -52,6 +52,24 @@
             }
         },
         {
+            "name": "Messangers",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build Messangers",
+            "program": "${workspaceFolder}/Akkamart/Messangers/bin/Debug/netcoreapp2.2/Messangers.dll",
+            "args": ["Messangers.conf"],
+            "cwd": "${workspaceFolder}/Akkamart/Messangers",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "env": {
+                "OWN_HOST": "localhost",
+                "SEED_NODE_HOST": "localhost",
+                // "SEED_NODE_PORT": "8080",
+                "SQLSERVER_CONNECTION": "Server=localhost,1433;Database=akkamart;User Id=sa;Password=(PHlx%IV2zbT&j3P;",
+            }
+        },
+        {
             "name": "Seed1",
             "type": "coreclr",
             "request": "launch",
