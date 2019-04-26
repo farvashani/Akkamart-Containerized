@@ -1,5 +1,6 @@
 ﻿using System;
 using Akka.Actor;
+using Akka.Actor.Dsl;
 using Akka.Event;
 using Akka.Routing;
 using Memberships;
@@ -7,6 +8,8 @@ using Shared;
 
 namespace Gateway {
     public class GatewayActor : ReceiveActor {
+
+        public IActorRef SenderController { get; private set; }
         public IActorRef MembershipService { get; private set; }
         public IActorRef CredentialService { get; private set; }
         public IActorRef MessangerService { get; private set; }
@@ -26,12 +29,14 @@ namespace Gateway {
 
             MembershipService = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
                 nameof (MemberManager).ToLower ());
+            var members = Context.ActorOf (Props.Create<MembershipsActor> (),
+                nameof (Memberships).ToLower ());
 
-            CredentialService = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
-                MyActorNames.CredentialActorname);
+            // CredentialService = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
+            //     MyActorNames.CredentialActorname);
 
-            MessangerService = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
-                MyActorNames.SmsServiceActorname);
+            // MessangerService = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
+            //     MyActorNames.SmsServiceActorname);
 
             // AccountingActor = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
             //     MyActorNames.AccountingActorname);
@@ -60,23 +65,56 @@ namespace Gateway {
             // PointsServiceActor = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
             //     MyActorNames.PointsActorname);
 
+            Receive<MemberCreatedEvent> (e => {
+                SenderController.Tell(new MemberAddedEvent(e.MemberId.Value, e.IsSucceed));
+
+            });
+
             Receive<AddMember> (t => {
+                SenderController = Sender;
+                var memberId = MemberId.New;
+                var cmd = new Memberships.CreateMemberCommand (memberId, t.Mobilenumber);
+                members.Ask<MemberCreatedEvent> (cmd)
+                    .ContinueWith (r => {
 
-                var memerId = Memberships.MemberId.New;
-                var cmd = new Memberships.CreateMemberCommand (memerId, t.Mobilenumber);
-                MembershipService.Tell (cmd);
-                //         MembershipService.Ask<MemberAddedEvent> (t).ContinueWith (r => {
-                //             return new MemberAddedEvent (r.Result.MemberId, r.Result.IsSucceed);
-                //             }).PipeTo (Self);
+                        if (r.Result.IsSucceed) {
+                        return new MemberCreatedEvent (r.Result.Mobilenumber, r.Result.MemberId,
+                        r.Result.IsSucceed);
+                        } else {
+                        return new MemberCreatedEvent (r.Result.Mobilenumber, r.Result.MemberId,
+                        r.Result.IsSucceed);
+                        }
 
-                });
+                    }).PipeTo (Self);
 
-             }
+                //Sender.Tell (new MemberAddedEvent (memberId.Value, true));
 
-            protected override void PreStart () {
-                _log.Info ("Startup actor starting..");
-                SetReceiveTimeout (TimeSpan.FromSeconds (3));
-            }
+                // var memerId = Memberships.MemberId.New;
+                // // 
+                // // MembershipService.Tell (cmd);
+                // //         MembershipService.Ask<MemberAddedEvent> (t).ContinueWith (r => {
+                // //             return new MemberAddedEvent (r.Result.MemberId, r.Result.IsSucceed);
+                // //             }).PipeTo (Self);
+                // // members.Ask<MemberAddedEvent> (new WorkItem ()).ContinueWith (r => {
+                // //     if (r.Result.IsSucceed) {
+                // //         var mae = new MemberAddedEvent (memerId.Value, r.Result.IsSucceed);
+                // //         return mae;
+
+                // //     } else {
+                // //         var mae2 = new MemberAddedEvent (memerId.Value, r.Result.IsSucceed);
+                // //         return mae2;
+                // //     }
+
+                // // }).PipeTo (Sender);
+
+            });
+
         }
 
+        protected override void PreStart () {
+            _log.Info ("Startup actor starting..");
+            SetReceiveTimeout (TimeSpan.FromSeconds (3));
+        }
     }
+
+}

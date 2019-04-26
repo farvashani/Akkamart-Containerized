@@ -17,6 +17,7 @@ sh build_docker.sh
 pwd
 cd ..
 cd Gateway 
+sh build_docker.sh
 pwd
 cd ../Memberships 
 sh build_docker.sh

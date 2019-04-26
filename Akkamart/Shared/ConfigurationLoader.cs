@@ -21,6 +21,7 @@ namespace Shared {
         }
 
         private static Akka.Configuration.Config LoadConfig (string configFile) {
+            Console.WriteLine ($"$%%%%%%%%OWN_HOST%%%%%% : {Environment.GetEnvironmentVariable ("OWN_HOST")}");
             var basepath = AppDomain.CurrentDomain.BaseDirectory;
             if (!configFile.StartsWith (basepath))
                 configFile = Path.Combine (basepath, configFile);

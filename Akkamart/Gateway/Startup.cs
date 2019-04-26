@@ -47,8 +47,8 @@ namespace Gateway {
                 loggingBuilder.AddSerilog (dispose: true);
             });
 
-            string gatewayConf = Configuration.GetSection (nameof (GatewayActor)).Value;
-            services.AddMicroservice (gatewayConf);
+            // string gatewayConf = Configuration.GetSection (nameof (GatewayActor)).Value;
+            services.AddMicroservice ("Gateway.conf");
             services.AddMvc ().SetCompatibilityVersion (CompatibilityVersion.Version_2_2);
             var containerBuilder = new ContainerBuilder ();
 
