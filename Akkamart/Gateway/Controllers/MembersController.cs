@@ -19,12 +19,10 @@ namespace Gateway.Controllers {
         [HttpGet (nameof (Index))]
         public ActionResult<string> Index () {
             return Ok ("Memberhsip service is up");
-
         }
 
         [HttpGet ("members/{id}")]
         public async Task<ActionResult<string>> Get (string id) {
-
             var member = await _gateway.Ask<MemberStateResponse> (new GetMemberState (id));
             return Ok (member);
         }
@@ -32,7 +30,6 @@ namespace Gateway.Controllers {
         // POST
         [HttpPost ("Register")]
         public async Task<IActionResult> Register ([FromBody] AddMemberDto model) {
-
             var cmd = new AddMember (model.Mobilenumber);
             //var member = await _gateway.Ask<MemberAddedEvent> (cmd);
             var member = await _gateway.Ask<MemberAddedEvent> (cmd);
@@ -55,7 +52,6 @@ namespace Gateway.Controllers {
         public async Task<IActionResult> Login (LoginDto model) {
             var cmd = new Login (model.Username, model.Password);
             var result = await _gateway.Ask (cmd);
-
             return Ok (result);
         }
 
