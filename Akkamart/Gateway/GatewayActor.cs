@@ -6,8 +6,10 @@ using Akka.Routing;
 using Memberships;
 using Shared;
 
-namespace Gateway {
-    public class GatewayActor : ReceiveActor {
+namespace Gateway
+{
+    public class GatewayActor : ReceiveActor
+    {
 
         public IActorRef SenderController { get; private set; }
         public IActorRef MembershipService { get; private set; }
@@ -22,15 +24,16 @@ namespace Gateway {
         public IActorRef OrderingActor { get; private set; }
         public IActorRef PaymentsActor { get; private set; }
         public IActorRef PointsServiceActor { get; private set; }
-        private readonly ILoggingAdapter _log = Context.GetLogger ();
+        private readonly ILoggingAdapter _log = Context.GetLogger();
 
-        public GatewayActor () {
-            Console.Write ("Gateway Startup......");
+        public GatewayActor()
+        {
+            Console.Write("Gateway Startup......");
 
-            MembershipService = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
-                nameof (MemberManager).ToLower ());
-            var members = Context.ActorOf (Props.Create<MembershipsActor> (),
-                nameof (Memberships).ToLower ());
+            MembershipService = Context.ActorOf(Props.Empty.WithRouter(FromConfig.Instance),
+                nameof(MemberManager).ToLower());
+            var members = Context.ActorOf(Props.Create<MembershipsActor>(),
+                nameof(Memberships).ToLower());
 
             // CredentialService = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
             //     MyActorNames.CredentialActorname);
@@ -65,32 +68,46 @@ namespace Gateway {
             // PointsServiceActor = Context.ActorOf (Props.Empty.WithRouter (FromConfig.Instance),
             //     MyActorNames.PointsActorname);
 
-            Receive<MemberCreatedEvent> (e => {
-                SenderController.Tell (new MemberAddedEvent (e.MemberId.Value, e.IsSucceed));
+            Receive<MemberCreatedEvent>(e =>
+            {
+                SenderController.Tell(new MemberAddedEvent(e.MemberId.Value, e.IsSucceed));
 
             });
 
-            Receive<AddMember> (t => {
+            Receive<AddMember>(t =>
+            {
                 SenderController = Sender;
                 var memberId = MemberId.New;
-                var cmd = new Memberships.CreateMemberCommand (memberId, t.Mobilenumber);
+                var cmd = new Memberships.CreateMemberCommand(memberId, t.Mobilenumber);
                 //members.Ask<MemberCreatedEvent> (cmd)
-                MembershipService.Ask<MemberCreatedEvent> (cmd)
-                    .ContinueWith (r => {
-                        if (r.Result.IsSucceed) {
-                        return new MemberCreatedEvent (r.Result.Mobilenumber, r.Result.MemberId,
-                        r.Result.IsSucceed);
-                        } else {
-                        return new MemberCreatedEvent (r.Result.Mobilenumber, r.Result.MemberId,
-                        r.Result.IsSucceed);
+                MembershipService.Ask<MemberCreatedEvent>(cmd)
+                    .ContinueWith(r =>
+                    {
+                        if (r.Result.IsSucceed)
+                        {
+                            return new MemberCreatedEvent(r.Result.Mobilenumber, r.Result.MemberId,
+                            r.Result.IsSucceed);
                         }
-                    }).PipeTo (Self);
+                        else
+                        {
+                            return new MemberCreatedEvent(r.Result.Mobilenumber, r.Result.MemberId,
+                            r.Result.IsSucceed);
+                        }
+                    }).PipeTo(Self);
+            });
+
+            Receive<AddCredentialForMember>(e =>
+            {
+                var memberId= new MemberId(e.MemberId);
+                var cmd = new RequestMemberAddCredentialCommand(memberId,e.Username,e.Password);
+                MembershipService.Tell(cmd);
             });
         }
 
-        protected override void PreStart () {
-            _log.Info ("Startup actor starting..");
-            SetReceiveTimeout (TimeSpan.FromSeconds (3));
+        protected override void PreStart()
+        {
+            _log.Info("Startup actor starting..");
+            SetReceiveTimeout(TimeSpan.FromSeconds(3));
         }
     }
 
