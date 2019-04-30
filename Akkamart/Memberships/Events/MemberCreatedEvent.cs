@@ -11,7 +11,6 @@ namespace Memberships {
             this.Mobilenumber = mobilenumber;
             this.MemberId = memberId;
             this.IsSucceed = isSucceed;
-
         }
         public bool IsSucceed { get; set; }
         public MemberId MemberId { get; private set; }

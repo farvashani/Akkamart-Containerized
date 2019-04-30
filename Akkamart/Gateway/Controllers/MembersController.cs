@@ -56,11 +56,11 @@ namespace Gateway.Controllers {
         }
 
         [HttpPost ("SetCredential/{id}")]
-        public IActionResult SetCredential (string id, LoginDto model) {
-            if (id.StartsWith ("member-"))
-                id = id.Remove (id.IndexOf ("member-"), "member-".Length);
+        public IActionResult SetCredential (string memeberId, LoginDto model) {
+            if (memeberId.StartsWith ("member-"))
+                memeberId = memeberId.Remove (memeberId.IndexOf ("member-"), "member-".Length);
 
-            var cmd = new AddCredentialForMember (id, model.Username, model.Password);
+            var cmd = new AddCredentialForMember (memeberId, model.Username, model.Password);
             _gateway.Tell (cmd);
 
             return Accepted ();
