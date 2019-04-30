@@ -18,11 +18,7 @@ namespace Gateway.Controllers {
 
         [HttpGet ("Index")]
         public IActionResult Index () {
-             
-
-            
             return View (sevicesIndex);
-            //return Ok ("Gateway is Running)");
         }
 
         public IActionResult Privacy () {
