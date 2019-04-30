@@ -1,8 +1,21 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    
 }
+@model  IList<ServiceIndex>;
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+   
+    @foreach(var service in Model)
+    {
+        <p>@service.Title</p>
+         <ul>
+       @foreach (var action in service.Actions)
+       {
+           <li><a href='@action.Url'>@action.Title</a></li>
+       }
+        </ul>
+    }
+   
+
 </div>

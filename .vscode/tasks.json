@@ -23,7 +23,11 @@
                 "${workspaceFolder}/Akkamart/Gateway/Gateway.csproj",
                 "/property:GenerateFullPaths=true"
             ],
-            "problemMatcher": "$tsc"
+            "problemMatcher": "$tsc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "build Membership",
