@@ -8,6 +8,8 @@ using Akkatecture.Sagas.AggregateSaga;
 using Akkatecture.Specifications.Provided;
 using Sagas.Events;
 using Memberships;
+using Credentials;
+using Akka.Routing;
 
 namespace Sagas.MemberAddCredential
 {
@@ -15,12 +17,12 @@ namespace Sagas.MemberAddCredential
         ISagaIsStartedBy<MemberAggregate, MemberId, MemberAddCredentialEvent>
     // ,ISagaHandles<Account, AccountId, MoneyReceivedEvent> 
     {
-        public IActorRef MemberManager { get; }
-        public IActorRef CredentialManager { get; }
-        public MemberAddCredentialSaga(IActorRef memberManager, IActorRef credentialManager)
+        public IActorRef MembershipService { get; private set; }
+        public IActorRef CredentialService { get; private set; }
+        public MemberAddCredentialSaga()
         {
-            MemberManager = memberManager;
-            CredentialManager = credentialManager;
+            MembershipService = Context.ActorOf(Props.Empty.WithRouter(FromConfig.Instance), nameof(MemberManager).ToLower());
+            CredentialService = Context.ActorOf(Props.Empty.WithRouter(FromConfig.Instance), nameof(CredentialManager).ToLower());
         }
         public bool Handle(IDomainEvent<MemberAggregate, MemberId, MemberAddCredentialEvent> domainEvent)
         {
@@ -28,16 +30,14 @@ namespace Sagas.MemberAddCredential
             if (isNewSpec.IsSatisfiedBy(this))
             {
                 //Call Credential
+                var credentialId = CredentialId.New;
+                var command = new Credentials.StoreCredential(credentialId,domainEvent.AggregateEvent.MemberId,domainEvent.AggregateEvent.Username.Value,domainEvent.AggregateEvent.Password.Value);
 
-                // var command = new ReceiveMoneyCommand (
-                //     domainEvent.AggregateEvent.Transaction.Receiver,
-                //     domainEvent.AggregateEvent.Transaction);
-
-                // AccountAggregateManager.Tell (command);
+                CredentialService.Tell(command);
 
 
-                //For Apply State
-                // Emit (new MemberAddCredentialStartedEvent (domainEvent.AggregateEvent.Transaction));
+                // For Apply State
+                //Emit (new MemberAddCredentialStartedEvent (domainEvent.AggregateEvent.Transaction));
             }
 
             return true;

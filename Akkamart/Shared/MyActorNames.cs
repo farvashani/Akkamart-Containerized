@@ -3,7 +3,7 @@ namespace Shared {
         //memberships SmsManager credentials gateway
         public const string MembershipActorname = "memberships";
 
-        public const string SmsServiceActorname = "SmsManager";
+        public const string SmsServiceActorname = "smsmanager";
         public const string CredentialActorname = "credentials";
         public const string Gateway = "gateway";
         public static readonly string PointsActorname = "points";
