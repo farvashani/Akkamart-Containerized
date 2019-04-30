@@ -12,7 +12,7 @@ namespace Memberships {
             this.Username = username;
             this.Password = password;
         }
-        public bool IsSucceed { get; set; }
+        // public bool IsSucceed { get; set; }
         public MemberId MemberId { get; private set; }
         public Username Username { get; private set; }
         public Password Password { get; private set; }

@@ -14,9 +14,9 @@ namespace Credentials {
         }
 
         private bool Execute (StoreCredential cmd) {
-            if (!string.IsNullOrEmpty (cmd.Username.Value) &&
-                !string.IsNullOrEmpty (cmd.Password.Value)) {
-                var @event = new CredentialStoredEvent (cmd.MemberId, cmd.CredentialId);
+            if (!string.IsNullOrEmpty (cmd.Username) &&
+                !string.IsNullOrEmpty (cmd.Password)) {
+                var @event = new CredentialStoredEvent (cmd.CredentialId,cmd.MemberId,new Username( cmd.Username),new Password(cmd.Password));
                 Emit (@event);
                 return true;
             }

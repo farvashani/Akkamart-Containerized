@@ -71,7 +71,6 @@ namespace Gateway
             Receive<MemberCreatedEvent>(e =>
             {
                 SenderController.Tell(new MemberAddedEvent(e.MemberId.Value, e.IsSucceed));
-
             });
 
             Receive<AddMember>(t =>
