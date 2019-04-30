@@ -18,27 +18,9 @@ namespace Gateway.Controllers {
 
         [HttpGet ("Index")]
         public IActionResult Index () {
+             
 
-            var membership = new ServiceIndex ();
-            membership.Title = "Membership";
-            membership.Actions = new List<ServiceAction> ();
-            var register = new ServiceAction () {
-                Id = "AA3CA589-DB54-476C-8EBA-2253776D7E57",
-                Title = "Register",
-                Url = "#Register"
-            };
-            var setCredential = new ServiceAction () {
-                Id = "AA3CA589-DB54-476C-8EBA-2253776D7E54",
-                Title = "setCredential",
-                Url = "#setCredential"
-            };
-
-            membership.Actions.Add (register);
-            membership.Actions.Add (setCredential);
-
-            var sevicesIndex = new List<ServiceIndex> ();
-            sevicesIndex.Add (membership);
-
+            
             return View (sevicesIndex);
             //return Ok ("Gateway is Running)");
         }
